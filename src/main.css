@@ -17,3 +17,7 @@ text {
 .sentence_tspan:selection {
 	background: none;
 };
+
+#result {
+	font-size: 60px;
+}

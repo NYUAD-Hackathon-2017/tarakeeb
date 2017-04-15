@@ -15,14 +15,12 @@ function loaddata(callback) {
 	d3.queue()
 	  .defer(d3.json, "json/examplecolors.json")
 	  .defer(d3.json, "json/examplegrammar.json")
-	  .defer(d3.json, "json/examplewords.json")
-	  .defer(d3.json, "json/examplelesson1.json")
+	  .defer(d3.json, "json/examplelesson.json")
 	  .awaitAll(function(e, results){
 	  	if(e) throw e;
 	  	colors         = results[0];
 	  	grammar_simple = results[1];
-	  	wordclass      = results[2];
-	  	words          = results[3];
+	  	words          = results[2];
 	  	callback();
 	  });
 }
@@ -35,6 +33,7 @@ function randbetween(a, b) {
 	return Math.random() * (b - a) + a;
 }
 
+// initializes svg
 function putwords() {
 	d3.select("svg")
 	  .append("g")
@@ -64,7 +63,16 @@ function putwords() {
       .attr("id", "sentence_group")
       .append("text")
       .attr("id", "sentence_texttag")
-      .attr("transform", "translate(0, 450)");
+      .attr("transform", "translate(100, 570)");
+    d3.select("svg")
+      .append("circle")
+      .attr("id", "grammarbutton")
+      .attr("r", 40)
+      .attr("cx", 40)
+      .attr("cy", 600-40)
+      .style("fill", "blue")
+      .style("stroke", "black")
+      .on("click", checkgrammar);
 }
 
 function putsentence() {
@@ -146,4 +154,30 @@ function pushWordToSentence(d) {
 function deleteWordFromSentence(d, i) {
 	sentence.splice(i, 1);
 	putsentence();
+}
+
+var grammartimeout;
+function checkgrammar() {
+	let request = d3.request("check");
+	let POSarray = [];
+	for (let i = 0; i < sentence.length; i++) {
+		POSarray.push(sentence[i].pos);
+	}
+	request.post(JSON.stringify(POSarray), function(d){
+		clearTimeout(grammartimeout);
+
+		let data = JSON.parse(d);
+		if (data[0]) {
+			d3.select("#result")
+			  .text("Correct!");
+		} else {
+			d3.select("#result")
+			  .text("Incorrect");
+		}
+
+		grammartimeout = window.setTimeout(function(){
+			d3.select("#result")
+			  .text("");
+		}, 3000);
+	});
 }
