@@ -34,6 +34,7 @@ function randbetween(a, b) {
 }
 
 // initializes svg
+var forcesim;
 function putwords() {
 	d3.select("svg")
 	  .append("g")

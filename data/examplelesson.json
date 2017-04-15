@@ -1,17 +1,44 @@
 [
 	{
 		"word": "قطّة",
-		"pos": "noun",
+		"pos": "noun_f",
 		"hint": "cat"
 	},
 	{
 		"word": "أنا",
-		"pos": "pronoun",
+		"pos": "pronoun1",
 		"hint": "I"
 	},
 	{
-		"word": "أخبر", 
-		"pos": "transitive_verb",
+		"word": "حب", 
+		"pos": "root_transitive_verb",
 		"hint": "like"
+	},
+	{
+		"word": "ال",
+		"pos": "determiner",
+		"hint": "the"
+	},
+	{
+		"word": "أ",
+		"pos": "subject_conjugator1"
+	},
+	{
+		"word": "ي",
+		"pos": "subject_conjugator3m"
+	},
+	{
+		"word": "ت",
+		"pos": "subject_conjugator3f"
+	},
+	{
+		"word": "كلب",
+		"pos": "noun_m",
+		"hint": "dog"
+	},
+	{
+		"word": "لا",
+		"pos": "adverb",
+		"hint": "not"
 	}
 ]

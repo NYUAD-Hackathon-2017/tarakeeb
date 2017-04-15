@@ -1,14 +1,38 @@
 {
-	"pronoun": {
-		"fill": "#00006d",
-		"stroke": "blue"
+	"pronoun1": {
+		"fill": "darkblue",
+		"stroke": "darkblue"
 	},
-	"noun": {
-		"stroke": "green",
-		"fill": "#015101"
+	"noun_m": {
+		"fill": "CornflowerBlue",
+		"stroke": "darkblue"
 	},
-	"transitive_verb": {
-		"fill": "#5b5b5b",
-		"stroke": "gray"
+	"noun_f": {
+		"fill": "CornflowerBlue",
+		"stroke": "darkblue"
+	},
+	"root_transitive_verb": {
+		"fill": "red",
+		"stroke": "red"
+	},
+	"determiner": {
+		"fill": "darkgrey",
+		"stroke": "darkgrey"
+	},
+	"subject_conjugator1": {
+		"fill": "#fc4444",
+		"stroke": "#fc4444"
+	},
+	"subject_conjugator3m": {
+		"fill": "#fc4444",
+		"stroke": "#fc4444"
+	},
+	"subject_conjugator3f": {
+		"fill": "#fc4444",
+		"stroke": "#fc4444"
+	},
+	"adverb": {
+		"fill": "orange",
+		"stroke": "orange"
 	}
 }
