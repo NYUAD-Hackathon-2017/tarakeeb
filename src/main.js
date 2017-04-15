@@ -137,7 +137,10 @@ function initwords() {
       .attr("cy", 50)
       .style("fill", "#f39c12")
       .style("stroke", "#f39c12")
-      .on("click", checkgrammar);
+      .on("click", function(){
+      	  sentence = [];
+      	  putsentence(); 
+      });
     svgsentence.append("text")
       .attr("id", "clearbutton_text")
       .attr("x", 100)

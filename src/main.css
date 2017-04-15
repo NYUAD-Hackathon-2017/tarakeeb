@@ -24,6 +24,10 @@ text {
 	cursor: pointer;
 }
 
+#clearbutton {
+	cursor: pointer;
+}
+
 .sentence_tspan:selection {
 	background: none;
 }
