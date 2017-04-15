@@ -15,7 +15,7 @@
 		"hint": "like"
 	},
 	{
-		"word": "ال",
+		"word": "الـ",
 		"pos": "determiner",
 		"hint": "the"
 	},
@@ -24,11 +24,11 @@
 		"pos": "subject_conjugator1"
 	},
 	{
-		"word": "ي",
+		"word": "يـ",
 		"pos": "subject_conjugator3m"
 	},
 	{
-		"word": "ت",
+		"word": "تـ",
 		"pos": "subject_conjugator3f"
 	},
 	{

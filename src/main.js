@@ -4,8 +4,8 @@ document.addEventListener("DOMContentLoaded", init);
 
 var colors         = null;
 var grammar_simple = null;
-var wordclass      = null;
 var words          = null;
+var conjugations   = null; // where letters change forms if added in front.
 
 var sentence = [];
 var clickbuffer = {};
@@ -16,11 +16,13 @@ function loaddata(callback) {
 	  .defer(d3.json, "json/examplecolors.json")
 	  .defer(d3.json, "json/examplegrammar.json")
 	  .defer(d3.json, "json/examplelesson.json")
+	  .defer(d3.json, "json/canCombine.json")
 	  .awaitAll(function(e, results){
 	  	if(e) throw e;
 	  	colors         = results[0];
 	  	grammar_simple = results[1];
 	  	words          = results[2];
+	  	conjugations   = results[3];
 	  	callback();
 	  });
 }
@@ -121,18 +123,20 @@ function putsentence() {
 	   .each(function(d, i){
 	   		let sel = d3.select(this);
 	   		sel.append("tspan")
-			   .classed(d.pos, true)
+			   .classed(d.word.pos, true)
 			   .classed("sentence_tspan", true)
-			   .text(d.word)
-			   .style("stroke", colors[d.pos].stroke)
-			   .style("fill", colors[d.pos].fill)
+			   .text(d.word.word)
+			   .style("stroke", colors[d.word.pos].stroke)
+			   .style("fill", colors[d.word.pos].fill)
 			   .on("click", function(d){
 			   	  deleteWordFromSentence(d, i);
 			   });
-		    sel.append("tspan")
-		       .classed("sentence_tspan", true)
-		       .classed("space", true)
-		       .text(" ");
+			if (!d.isConjugatedNext) {
+			    sel.append("tspan")
+			       .classed("sentence_tspan", true)
+			       .classed("space", true)
+			       .text(" ");				
+			}
 	   });
 }
 
@@ -181,8 +185,25 @@ function word_onmouseup(d, i) {
 	// }
 }
 
+function isCombinable(pos1, pos2) {
+	 if(pos1 in conjugations)
+	 	return conjugations[pos1];
+ 	return false;
+}
+
 function pushWordToSentence(d) {
-	sentence.push(d);
+	// "indexes" is the related indexes to delete upon click.
+	var sentenceword = {word:d, isConjugatedPrev:false, isConjugatedNext:false};
+	sentence.push(sentenceword);
+	// next, do a pass over the sentence to combine things that can combine.
+	for (let i = 0; i < sentence.length - 1; i++) {
+		var result = isCombinable(sentence[i].word.pos, sentence[i+1].word.pos);
+		if (result == "next") {
+			sentence[i].isConjugatedNext = true;
+		} else if (result == "prev") {
+			sentence[i].isConjugatedPrev = true;
+		}
+	}
 	console.log(d);
 	putsentence();
 }
@@ -197,7 +218,7 @@ function checkgrammar() {
 	let request = d3.request("check");
 	let POSarray = [];
 	for (let i = 0; i < sentence.length; i++) {
-		POSarray.push(sentence[i].pos);
+		POSarray.push(sentence[i].word.pos);
 	}
 	request.mimeType("application/json")
 	       .post(JSON.stringify(POSarray), function(d){

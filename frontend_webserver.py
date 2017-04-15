@@ -31,6 +31,8 @@ def send_json(path):
 def grammarcheck():
     t = flask.request.data.decode("utf-8")
     data = json.loads(t)
+    # with open("grammarlog", "a") as f:
+    #     grammarlog
     for grammar in grammarrules:
         if equivarray(grammar, data):
             return "[true]"
