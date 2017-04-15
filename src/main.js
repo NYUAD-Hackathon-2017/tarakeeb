@@ -16,7 +16,7 @@ function loaddata(callback) {
 	  .defer(d3.json, "json/examplecolors.json")
 	  .defer(d3.json, "json/examplegrammar.json")
 	  .defer(d3.json, "json/examplewords.json")
-	  .defer(d3.json, "json/examplelesson.json")
+	  .defer(d3.json, "json/examplelesson1.json")
 	  .awaitAll(function(e, results){
 	  	if(e) throw e;
 	  	colors         = results[0];
@@ -43,14 +43,12 @@ function putwords() {
 	  .data(words)
 	  .enter()
 	  .append("text")
-	  .text(function(d){return d[0]})
+	  .text(function(d){return d.word})
 	  .style("fill", function(d){
-	  	  var wordtype = d[1];
-	  	  return colors[d[1]].fill;
+	  	  return colors[d.pos].fill;
 	  })
 	  .style("stroke", function(d){
-	  	  var wordtype = d[1];
-	  	  return colors[d[1]].stroke;
+	  	  return colors[d.pos].stroke;
 	  })
 	  .attr("transform", function(d){
 	  	var translate = "translate(" + randbetween(100, 700) + 
@@ -79,11 +77,11 @@ function putsentence() {
 	   .each(function(d, i){
 	   		let sel = d3.select(this);
 	   		sel.append("tspan")
-			   .classed(d[1], true)
+			   .classed(d.pos, true)
 			   .classed("sentence_tspan", true)
-			   .text(d[0])
-			   .style("stroke", colors[d[1]].stroke)
-			   .style("fill", colors[d[1]].fill)
+			   .text(d.word)
+			   .style("stroke", colors[d.pos].stroke)
+			   .style("fill", colors[d.pos].fill)
 			   .on("click", function(d){
 			   	  deleteWordFromSentence(d, i);
 			   });
@@ -95,7 +93,7 @@ function putsentence() {
 }
 
 function word_onmousedown(d, i) {
-	var key = d[0] + d[1];
+	var key = d.word + d.pos;
 	if (key in clickbuffer) {
 		clickbuffer[key].mousedown++;
 	} else {
@@ -111,7 +109,7 @@ function word_onmousedown(d, i) {
 var deletemeaning;
 var doubleclick;
 function word_onmouseup(d, i) {
-	var key = d[0] + d[1];
+	var key = d.word + d.pos;
 	clickbuffer[key].end = new Date().getTime();
 	clickbuffer[key].mouseup++;
 	// First, wait for a potential second click
@@ -125,7 +123,7 @@ function word_onmouseup(d, i) {
 			if (clickbuffer[key].end - clickbuffer[key].start > LONGCLICKTIME) {
 				clearTimeout(deletemeaning);
 				d3.select("#meaning")
-				  .text(d[2]);
+				  .text(d.hint);
 				deletemeaning = window.setTimeout(function(){
 					d3.select("#meaning")
 					  .text("");

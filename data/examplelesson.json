@@ -1,5 +1,17 @@
 [
-	["قطّة", "noun", "cat"],
-	["أنا", "pronoun", "I"],
-	["أخبر", "transitive_verb", "like"]
+	{
+		"word": "قطّة",
+		"pos": "noun",
+		"hint": "cat"
+	},
+	{
+		"word": "أنا",
+		"pos": "pronoun",
+		"hint": "I"
+	},
+	{
+		"word": "أخبر", 
+		"pos": "transitive_verb",
+		"hint": "like"
+	}
 ]
