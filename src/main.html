@@ -1,13 +1,118 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Korrect Me Kuick صححلي</title>
+
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+	<!-- jQuery library -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+
+	<!-- Latest compiled JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
 	<script src="https://d3js.org/d3.v4.js"></script>
+
 	<script src="main.js"></script>
-	<link rel="stylesheet" type="text/css" href="main.css">
+
+	<link rel="stylesheet" href="main.css">
+
+	<style>
+
+	@font-face {
+    font-family: ar;
+    src: url(ar.otf);
+	}
+
+	body{
+		background-color: #3498db;
+		font-family: ar;
+	}
+
+	.box{
+		width: 1000px;
+		height: 650px;
+		margin: auto;
+		padding: 30px;
+		background-color: white;
+		margin-top: 50px;
+		/*margin-bottom: 100px;*/
+		border-radius: 10px;
+		box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+	}
+
+	.profile-box{
+		max-width: 300px;
+		height: 650px;
+		margin: auto;
+		padding: 10px;
+		background-color: white;
+		margin-top: 50px;
+		/*margin-bottom: 100px;*/
+		border-radius: 10px;
+		box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+	}
+
+	#logo{
+		width: 100%;
+	}
+
+	.user-info{
+		text-align: center;
+	}
+
+	text {
+		font-family: ar;
+	}
+
+
+	</style>
+
 </head>
-<body>
-	<svg width="800" height="600">
-	</svg>
+
+<body dir="rtl" lang="ar">
+
+	<div class="container-fluid">
+ 		<div class="row">
+
+ 			<!-- <center><h1 style="color: white; margin-top: 50px;">Tarakeeb</h1></center> -->
+	  	
+	  	<div class="col-md-8" dir="ltr">
+
+	  		<div class="box">
+	 				<svg width="1000" height="600">
+	 					<font-face
+						<line x1="900" y1="500" x2="100" y2="500" style="stroke:#3498db;stroke-width:2" />
+	 				</svg>
+	 			</div>
+
+	  	</div>
+
+  		<div class="col-md-4">
+
+  			<div class="profile-box">
+  				<img id="logo" src="logo.png">
+
+  				<hr>
+
+  				<div class="user-info">
+  					<h3 class="student-name"><span style="font-weight: bold;">الأسم:</span> فهمي</h3>
+  					<h3 class="student-name"><span style="font-weight: bold;">النقاط:</span> 10</h3>
+  				</div>
+
+  				<h3></h3>
+  			</div>
+
+  		</div>
+
+ 			
+
+		</div>
+	</div>
+
+	
+
 	<div id="meaning"></div>
 	<div id="result"></div>
+
 </body>

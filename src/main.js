@@ -89,13 +89,13 @@ function initwords() {
       .attr("id", "sentence_texttag")
       .attr("transform", "translate(100, 570)");
     d3.select("svg")
-      .append("circle")
+      .append("circlxe")
       .attr("id", "grammarbutton")
       .attr("r", 40)
       .attr("cx", 40)
       .attr("cy", 600-40)
-      .style("fill", "blue")
-      .style("stroke", "black")
+      .style("fill", "#f39c12")
+      .style("stroke", "#f39c12")
       .on("click", checkgrammar);
 
     forcesim.on("tick", updatewords);
