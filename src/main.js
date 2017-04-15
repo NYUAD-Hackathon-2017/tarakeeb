@@ -121,12 +121,12 @@ function initwords() {
       .on("click", checkgrammar);
     svgsentence.append("text")
       .attr("id", "grammarbutton_text")
-      .attr("x", 0)
-      .attr("y", 50)
-      .style("font-size", 30)
-      .style("fill", "black")
-      .style("stroke", "black")
-      .text("Check!")
+      .attr("x", 22)
+      .attr("y", 55)
+      .style("font-size", 20)
+      .style("fill", "white")
+      .style("stroke", "white")
+      .text("تأكد")
       .style("pointer-events", "none");
 
 
@@ -140,12 +140,12 @@ function initwords() {
       .on("click", checkgrammar);
     svgsentence.append("text")
       .attr("id", "clearbutton_text")
-      .attr("x", 100)
-      .attr("y", 50)
-      .style("font-size", 30)
-      .style("fill", "black")
-      .style("stroke", "black")
-      .text("Clear")
+      .attr("x", 113)
+      .attr("y", 55)
+      .style("font-size", 25)
+      .style("fill", "white")
+      .style("stroke", "white")
+      .text("أزل")
       .style("pointer-events", "none");
 
     forcesim.on("tick", updatewords);
@@ -333,13 +333,13 @@ function checkgrammar() {
 				let data = JSON.parse(d.response);
 				if (data[0]) {
 					d3.select("#result")
-					  .text("Correct!");
+					  .text("صحيح!");
 					// if correct, read it out
 					let s = putsentence_s();
 					responsiveVoice.speak(s, "Arabic Female", {rate: 0.75});
 				} else {
 					d3.select("#result")
-					  .text("Incorrect");
+					  .text("حاول مرة اخرى");
 				}
 
 				grammartimeout = window.setTimeout(function(){

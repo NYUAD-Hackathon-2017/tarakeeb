@@ -43,13 +43,13 @@ body{
 }
 
 .box{
-	width: 1000px;
-	height: 650px;
+	width: 900px;
+	height: 630px;
 	margin: auto;
+	margin-left: 100px;
 	padding: 30px;
 	background-color: white;
 	margin-top: 50px;
-	/*margin-bottom: 100px;*/
 	border-radius: 10px;
 	box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
 }
