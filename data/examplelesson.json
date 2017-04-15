@@ -15,7 +15,7 @@
 		"hint": "like"
 	},
 	{
-		"word": "ال",
+		"word": "الـ",
 		"pos": "determiner",
 		"hint": "the"
 	},
@@ -24,11 +24,11 @@
 		"pos": "subject_conjugator1"
 	},
 	{
-		"word": "ي",
+		"word": "يـ",
 		"pos": "subject_conjugator3m"
 	},
 	{
-		"word": "ت",
+		"word": "تـ",
 		"pos": "subject_conjugator3f"
 	},
 	{
@@ -46,28 +46,13 @@
 		"pos": "adjective_conjugatorf"
 	},
 	{
-		"word": "كبير",
+		"word": "صغير",
 		"pos": "adjective",
-		"hint": "big"
+		"hint": "small"
 	},
 	{
-		"word": "صغير",
-		"pos": "adjective",
-		"hint": "small"
-	}
-	{
 		"word": "كبير",
 		"pos": "adjective",
 		"hint": "big"
-	}
-	{
-		"word": "ة",
-		"pos": "adjective_conjugatorf",
-		"hint": "big"
-	}
-	{
-		"word": "صغير",
-		"pos": "adjective",
-		"hint": "small"
 	}
 ]

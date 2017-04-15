@@ -131,7 +131,14 @@ function putsentence() {
 			   .on("click", function(d){
 			   	  deleteWordFromSentence(d, i);
 			   });
-			if (!d.isConjugatedNext) {
+
+		    // if either of these conditions are right, skip space
+		    var condition1 = d.isConjugatedNext;
+		    var condition2 = (i+1 < sentence.length) && sentence[i+1].isConjugatedPrev;
+
+			if (condition1 || condition2)
+				{}
+			else {
 			    sel.append("tspan")
 			       .classed("sentence_tspan", true)
 			       .classed("space", true)

@@ -40,9 +40,9 @@
 		"stroke": "green"
 	},
 	"adjective_conjugatorf": {
-		"fill": "darkgreen",
+		"fill": "#27E469",
 		"stroke": "green"
-	}
+	},
 	"adjective": {
 		"fill": "#27E469",
 		"stroke": "#27E469"
