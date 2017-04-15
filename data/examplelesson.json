@@ -29,21 +29,21 @@
 	{
 		"word": "أ",
 		"pos": "VPro1",
-		"hint": "verb conj 1st person | A",
+		"hint": "~ | A",
         "pronounce":"أ"
 
 	},
 	{
 		"word": "يـ",
 		"pos": "VPro3m",
-		"hint":"verb conj 3rd person masculine | E",
+		"hint":"~ | E",
         "pronounce":"ي"
 
 	},
 	{
 		"word": "تـ",
 		"pos": "VPro3f",
-		"hint":"verb conj 3rd person feminine | ta",
+		"hint":"~ | ta",
         "pronounce":"ت"
 	},
 	{
@@ -63,7 +63,7 @@
 	{
 		"word": "ة",
 		"pos": "Af",
-		"hint": "adjective feminizer | ta",
+		"hint": "~ | ta",
         "pronounce":"ة"
 
 	},

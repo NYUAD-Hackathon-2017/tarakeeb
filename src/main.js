@@ -131,7 +131,12 @@ function initwords() {
       .style("stroke", "black")
       .text("Check!")
       .style("pointer-events", "none");
-
+    svgsentence.append("line")
+      .attr("id", "divider")
+      .attr("x1", -1000)
+      .attr("x2",  1000)
+      .attr("y1", 0)
+      .attr("y2", 0);
 
     svgsentence.append("circle")
       .attr("id", "clearbutton")
@@ -265,7 +270,7 @@ function word_onmousedown(d, i) {
 		"mousedown": 1,
 		"mouseup": 0
 		}
-	}	
+	}
 }
 
 var deletemeaning;
@@ -275,36 +280,44 @@ function word_onmouseup(d, i) {
 	clickbuffer[key].end = new Date().getTime();
 	clickbuffer[key].mouseup++;
 	// First, wait for a potential second click
-	// if (clickbuffer[key].mouseup >= 2) {
-	// 	clearTimeout(doubleclick);
-	// 	pushWordToSentence(d);
-	// 	delete clickbuffer[key];
-	// } else {
+	if (clickbuffer[key].mouseup >= 2) {
+		clearTimeout(doubleclick);
+		// also read it out
+		responsiveVoice.speak(d.pronounce,"Arabic Female", {rate: 0.75});
+		delete clickbuffer[key];
+	} else {
 		doubleclick = window.setTimeout(function(){
+			pushWordToSentence(d);
 			// long click
-			if (clickbuffer[key].end - clickbuffer[key].start > LONGCLICKTIME) {
-				clearTimeout(deletemeaning);
-				d3.select("#meaning")
-				  .text(d.hint);
-				// also read it out
-				responsiveVoice.speak(d.pronounce,"Arabic Female", {rate: 0.75});
-				deletemeaning = window.setTimeout(function(){
-					d3.select("#meaning")
-					  .text("");
-				}, 1600);
-			} else {
-				pushWordToSentence(d);
-				// short click
-			}
+			// if (clickbuffer[key].end - clickbuffer[key].start > LONGCLICKTIME) {
+			// 	clearTimeout(deletemeaning);
+			// 	d3.select("#meaning")
+			// 	  .text(d.hint);
+			// 	deletemeaning = window.setTimeout(function(){
+			// 		d3.select("#meaning")
+			// 		  .text("");
+			// 	}, 1600);
+			// } else {
+			// 	pushWordToSentence(d);
+			// 	// short click
+			// }
 			delete clickbuffer[key];
-		}, 150);
-	// }
+		}, 250);
+    }
 }
 
 function word_onmouseover(d, i) {
 	let sel = d3.select(this);
 	sel.transition()
 	   .style("font-size", d.fontsize * 1.2);
+
+    clearTimeout(deletemeaning);
+	d3.select("#meaning")
+	  .text(d.hint);
+	deletemeaning = window.setTimeout(function(){
+		d3.select("#meaning")
+		  .text("");
+	}, 1600);
 }
 
 function word_onmouseout(d, i) {

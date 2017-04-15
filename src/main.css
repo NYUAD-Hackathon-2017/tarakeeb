@@ -8,16 +8,15 @@ text {
 
 .sentence_tspan {
 	font-size: 60px;
-    -webkit-user-select: none;
-       -moz-user-select: none;
-        -ms-user-select: none;
-            user-select: none;
-
     cursor: pointer;
 }
 
 .svgword {
 	cursor: pointer;
+    -webkit-user-select: none;
+       -moz-user-select: none;
+        -ms-user-select: none;
+            user-select: none;
 }
 
 #grammarbutton {
@@ -47,8 +46,8 @@ body{
 }
 
 .box{
-	width: 1000px;
-	height: 650px;
+	width: 900px;
+	height: 750px;
 	margin: auto;
 	padding: 30px;
 	background-color: white;
@@ -76,4 +75,9 @@ body{
 
 .user-info{
 	text-align: center;
+}
+
+#divider {
+	stroke-width: 2px;
+	stroke: black;
 }
