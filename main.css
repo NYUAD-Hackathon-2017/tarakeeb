@@ -1,0 +1,18 @@
+text {
+	font-family: "Open Sans", sans-serif;
+}
+
+.eg1 {
+	stroke: green;
+	fill: #015101;
+}
+
+.eg2 {
+	stroke: gray;
+	fill: #5b5b5b;
+}
+
+.eg3 {
+	stroke: blue;
+	fill: #00006d;
+}
