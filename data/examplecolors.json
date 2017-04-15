@@ -1,5 +1,14 @@
 {
-	"pronoun": "#00006d",
-	"noun": "#015101",
-	"transitive verb": "#5b5b5b"
+	"pronoun": {
+		"fill": "#00006d",
+		"stroke": "blue"
+	},
+	"noun": {
+		"stroke": "green",
+		"fill": "#015101"
+	},
+	"transitive verb": {
+		"fill": "#5b5b5b",
+		"stroke": "gray"
+	}
 }

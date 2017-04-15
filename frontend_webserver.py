@@ -2,6 +2,7 @@
 # for rapidly developing frontend
 # without having to wait for backend.
 
+from flask import Flask
 import flask
 
 app = Flask(__name__)
@@ -10,6 +11,10 @@ app = Flask(__name__)
 def hello_world():
     return 'Hello, World!'
 
+@app.route('/<path:path>')
+def serve_page(path):
+    return flask.send_from_directory('src', path)
+
 @app.route('/json/<path:path>')
 def send_json(path):
-    return send_from_directory('json', path)
+    return flask.send_from_directory('data', path)
