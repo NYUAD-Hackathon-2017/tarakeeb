@@ -1,5 +1,5 @@
 text {
-	font-family: "Open Sans", sans-serif;
+	font-family: ar;
 }
 
 #meaning {
@@ -30,4 +30,46 @@ text {
 
 #result {
 	font-size: 60px;
+}
+
+@font-face {
+    font-family: ar;
+    src: url(ar.otf);
+}
+
+body{
+	background-color: #3498db;
+	font-family: ar;
+}
+
+.box{
+	width: 1000px;
+	height: 650px;
+	margin: auto;
+	padding: 30px;
+	background-color: white;
+	margin-top: 50px;
+	/*margin-bottom: 100px;*/
+	border-radius: 10px;
+	box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+}
+
+.profile-box{
+	max-width: 300px;
+	height: 650px;
+	margin: auto;
+	padding: 10px;
+	background-color: white;
+	margin-top: 50px;
+	/*margin-bottom: 100px;*/
+	border-radius: 10px;
+	box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+}
+
+#logo{
+	width: 100%;
+}
+
+.user-info{
+	text-align: center;
 }

@@ -116,8 +116,8 @@ function initwords() {
       .attr("r", 40)
       .attr("cx", 40)
       .attr("cy", 50)
-      .style("fill", "blue")
-      .style("stroke", "black")
+      .style("fill", "#f39c12")
+      .style("stroke", "#f39c12")
       .on("click", checkgrammar);
 
     forcesim.on("tick", updatewords);
