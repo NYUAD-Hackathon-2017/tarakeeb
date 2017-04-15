@@ -12,6 +12,16 @@ text {
        -moz-user-select: none;
         -ms-user-select: none;
             user-select: none;
+
+    cursor: pointer;
+}
+
+.svgword {
+	cursor: pointer;
+}
+
+#grammarbutton {
+	cursor: pointer;
 }
 
 .sentence_tspan:selection {

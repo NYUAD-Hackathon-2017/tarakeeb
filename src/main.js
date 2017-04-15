@@ -65,6 +65,7 @@ function initwords() {
 	  .data(words, d3key)
 	  .enter()
 	  .append("text")
+	  .classed("svgword", true)
 	  .text(function(d){return d.word})
 	  .style("fill", function(d){
 	  	  return colors[d.pos].fill;
