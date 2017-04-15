@@ -55,4 +55,19 @@
 		"pos": "adjective",
 		"hint": "small"
 	}
+	{
+		"word": "كبير",
+		"pos": "adjective",
+		"hint": "big"
+	}
+	{
+		"word": "ة",
+		"pos": "adjective_fconjugator",
+		"hint": "big"
+	}
+	{
+		"word": "صغير",
+		"pos": "adjective",
+		"hint": "small"
+	}
 ]
