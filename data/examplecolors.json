@@ -35,4 +35,9 @@
 		"fill": "orange",
 		"stroke": "orange"
 	}
+	"adjective": {
+		"fill": "#27E469",
+		"stroke": "#27E469"
+	}
+
 }

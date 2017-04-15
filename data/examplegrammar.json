@@ -21,7 +21,31 @@
 	["pronoun1", "subject_conjugator1", "root_transitive_verb", "determiner", "noun_m", "determiner", "adjective"],
 
 
-["determiner", "noun_f", "determiner", "adjective", "adjective_conjugatorf", "subject_conjugator3f", "root_transitive_verb", "determiner", "noun_f"],
+	["determiner", "noun_f", "determiner", "adjective", "adjective_conjugatorf", "subject_conjugator3f", "root_transitive_verb", "determiner", "noun_f"],
+	["determiner", "noun_f", "determiner", "adjective", "adjective_conjugatorf", "subject_conjugator3f", "root_transitive_verb", "determiner", "noun_m"],
+	["determiner", "noun_f", "determiner", "adjective", "adjective_conjugatorf", "subject_conjugator3f", "root_transitive_verb", "determiner", "noun_f", "determiner", "adjective", "adjective_conjugatorf"],
+	["determiner", "noun_f", "subject_conjugator3f", "root_transitive_verb", "determiner", "noun_f", "determiner", "adjective", "adjective_conjugatorf"],
+	["determiner", "noun_f", "determiner", "adjective", "adjective_conjugatorf", "subject_conjugator3f", "root_transitive_verb", "determiner", "noun_m", "determiner", "adjective"],
+	["determiner", "noun_f", "determiner", "adjective", "adjective_conjugatorf", "subject_conjugator3f", "root_transitive_verb", "determiner", "noun_f", "determiner", "adjective", "adjective_conjugatorf"],
+
+
+
+	["determiner", "noun_m", "determiner", "adjective", "subject_conjugator3f", "root_transitive_verb", "determiner", "noun_f"],
+	["determiner", "noun_m", "determiner", "adjective", "subject_conjugator3f", "root_transitive_verb", "determiner", "noun_m"],
+	["determiner", "noun_m", "determiner", "adjective", "subject_conjugator3f", "root_transitive_verb", "determiner", "noun_m", "determiner", "adjective"],
+	["determiner", "noun_m", "determiner", "adjective",  "subject_conjugator3f", "root_transitive_verb", "determiner", "noun_f", "determiner", "adjective", "adjective_conjugatorf"],
+	["determiner", "noun_m", "subject_conjugator3f", "root_transitive_verb", "determiner", "noun_f", "determiner", "adjective", "adjective_conjugatorf"],
+	
+
+	["pronoun1", "subject_conjugator1", "root_transitive_verb", "determiner", "noun_f", "determiner", "adjective", "adjective_conjugatorf"],
+	["pronoun1", "subject_conjugator1", "root_transitive_verb", "determiner", "noun_m","determiner", "adjective"],
+	["determiner", "noun_f", "subject_conjugator3f", "root_transitive_verb", "determiner", "noun_f",  "determiner", "adjective", "adjective_conjugatorf"],
+	["determiner", "noun_f", "subject_conjugator3f", "root_transitive_verb", "determiner", "noun_m","determiner", "adjective"],
+	["determiner", "noun_m", "subject_conjugator3m", "root_transitive_verb", "determiner", "noun_m",  "determiner", "adjective"],
+	["determiner", "noun_m", "subject_conjugator3m", "root_transitive_verb", "determiner", "noun_f",  "determiner", "adjective", "adjective_conjugatorf"],
+
+
+
 
 
 
