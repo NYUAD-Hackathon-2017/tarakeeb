@@ -4,8 +4,20 @@
 
 from flask import Flask
 import flask
+import json
 
 app = Flask(__name__)
+
+with open("data/examplegrammar.json") as f:
+    grammarrules = json.load(f)
+
+def equivarray(a, b):
+    if len(a) != len(b):
+        return False
+    for i in range(len(a)):
+        if a[i] != b[i]:
+            return False
+    return True
 
 @app.route('/')
 def hello_world():
@@ -17,10 +29,12 @@ def send_json(path):
 
 @app.route('/check', methods=["POST"])
 def grammarcheck():
-    data = request.get_json()
-    with open("grammarlog", "a") as f:
-        f.write(repr(data) + "\n")
-    return "[true]"
+    t = flask.request.data.decode("utf-8")
+    data = json.loads(t)
+    for grammar in grammarrules:
+        if equivarray(grammar, data):
+            return "[true]"
+    return "[false]"
 
 @app.route('/<path:path>')
 def serve_page(path):

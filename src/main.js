@@ -163,21 +163,21 @@ function checkgrammar() {
 	for (let i = 0; i < sentence.length; i++) {
 		POSarray.push(sentence[i].pos);
 	}
-	request.post(JSON.stringify(POSarray), function(d){
-		clearTimeout(grammartimeout);
+	request.mimeType("application/json")
+	       .post(JSON.stringify(POSarray), function(d){
+				clearTimeout(grammartimeout);
+				let data = JSON.parse(d.response);
+				if (data[0]) {
+					d3.select("#result")
+					  .text("Correct!");
+				} else {
+					d3.select("#result")
+					  .text("Incorrect");
+				}
 
-		let data = JSON.parse(d);
-		if (data[0]) {
-			d3.select("#result")
-			  .text("Correct!");
-		} else {
-			d3.select("#result")
-			  .text("Incorrect");
-		}
-
-		grammartimeout = window.setTimeout(function(){
-			d3.select("#result")
-			  .text("");
-		}, 3000);
+				grammartimeout = window.setTimeout(function(){
+					d3.select("#result")
+					  .text("");
+				}, 3000);
 	});
 }

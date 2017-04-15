@@ -1,6 +1,6 @@
 [
-	["pronoun", "transitive verb", "noun"],
-	["noun", "transitive verb", "noun"],
-	["noun", "transitive verb", "pronoun"],
-	["noun", "transitive verb", "noun"]
+	["pronoun", "transitive_verb", "noun"],
+	["noun", "transitive_verb", "noun"],
+	["noun", "transitive_verb", "pronoun"],
+	["noun", "transitive_verb", "noun"]
 ]
