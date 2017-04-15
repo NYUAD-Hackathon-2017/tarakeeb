@@ -194,9 +194,6 @@ function updatewords() {
 	d3.select(".words")
 	  .selectAll("text")
 	  .data(words, d3key)
-	  .style("font-size", function(d){
-	  	return d.currentsize;
-	  })
 	  .attr("transform", function(d){
 	  	var translate = "translate(" + d.x + 
 	  		"," + d.y + ")";
