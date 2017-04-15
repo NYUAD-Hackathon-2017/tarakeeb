@@ -43,4 +43,9 @@
 		"fill": "darkgreen",
 		"stroke": "green"
 	}
+	"adjective": {
+		"fill": "#27E469",
+		"stroke": "#27E469"
+	}
+
 }
