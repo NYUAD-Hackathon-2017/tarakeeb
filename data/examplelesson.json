@@ -2,13 +2,13 @@
 	{
 		"word": "قطّة",
 		"pos": "Nf",
-		"hint": "cat|Kettah”,
-		"pronounce":"قِطَّة"
+		"hint": "cat|Kettah",
+		"pronounce": "قِطَّة"
 	},
 	{
 		"word": "أنا",
 		"pos": "Pro1",
-		"hint": "I|Anna”,
+		"hint": "I|Anna",
         "pronounce":"أَنا"
 
 	},
