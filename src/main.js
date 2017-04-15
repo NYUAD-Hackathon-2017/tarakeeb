@@ -26,7 +26,7 @@ function loaddata(callback) {
 }
 
 function init() {
-	loaddata(putwords);
+	loaddata(initwords);
 }
 
 function randbetween(a, b) {
@@ -34,13 +34,33 @@ function randbetween(a, b) {
 }
 
 // initializes svg
+var d3key = function(d) {
+	return d.key + d.pos;
+}
+
 var forcesim;
-function putwords() {
+var collisionforce, centerforce;
+function initwords() {
+	// initialize word positions
+	for (let i = 0; i < words.length; i++) {
+		words[i].x = randbetween(100, 700);
+		words[i].y = randbetween(100, 300);
+		words[i].rot = randbetween(-30, 30);
+	}
+
+	forcesim = d3.forceSimulation(words);
+	collisionforce = d3.forceCollide(function(d){
+		return 50;
+	});
+	centerforce = d3.forceCenter(400, 300);
+	forcesim.force("collision", collisionforce)
+			.force("center", centerforce)
+	        .alphaDecay(0.01);
 	d3.select("svg")
 	  .append("g")
 	  .classed("words", true)
 	  .selectAll("text")
-	  .data(words)
+	  .data(words, d3key)
 	  .enter()
 	  .append("text")
 	  .text(function(d){return d.word})
@@ -51,14 +71,15 @@ function putwords() {
 	  	  return colors[d.pos].stroke;
 	  })
 	  .attr("transform", function(d){
-	  	var translate = "translate(" + randbetween(100, 700) + 
-	  		"," + randbetween(100, 300) + ")";
-	  	var rotate = "rotate(" + randbetween(-30, 30) + ")";
+	  	var translate = "translate(" + d.x + 
+	  		"," + d.y + ")";
+	  	var rotate = "rotate(" + d.rot + ")";
 	  	return translate + " " + rotate;
 	  })
 	  .style("font-size", randbetween(70, 100))
 	  .on("mousedown", word_onmousedown)
 	  .on("mouseup", word_onmouseup);
+
     d3.select("svg")
       .append("g")
       .attr("id", "sentence_group")
@@ -74,6 +95,20 @@ function putwords() {
       .style("fill", "blue")
       .style("stroke", "black")
       .on("click", checkgrammar);
+
+    forcesim.on("tick", updatewords);
+}
+
+function updatewords() {
+	d3.select(".words")
+	  .selectAll("text")
+	  .data(words, d3key)
+	  .attr("transform", function(d){
+	  	var translate = "translate(" + d.x + 
+	  		"," + d.y + ")";
+	  	var rotate = "rotate(" + d.rot + ")";
+	  	return translate + " " + rotate;
+	  });
 }
 
 function putsentence() {
