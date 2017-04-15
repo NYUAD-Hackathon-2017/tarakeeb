@@ -2,57 +2,61 @@
 	{
 		"word": "قطّة",
 		"pos": "Nf",
-		"hint": "cat"
+		"hint": "cat|Kettah"
 	},
 	{
 		"word": "أنا",
 		"pos": "Pro1",
-		"hint": "I"
+		"hint": "I|Anna"
 	},
 	{
-		"word": "حب", 
+		"word": "حب",
 		"pos": "VtRoot",
-		"hint": "like"
+		"hint": "like|hobb"
 	},
 	{
 		"word": "الـ",
 		"pos": "D",
-		"hint": "the"
+		"hint": "the| Al"
 	},
 	{
 		"word": "أ",
-		"pos": "VPro1"
+		"pos": "VPro1",
+		"hint": "A"
 	},
 	{
 		"word": "يـ",
-		"pos": "VPro3m"
+		"pos": "VPro3m",
+		"hint":"E"
 	},
 	{
 		"word": "تـ",
-		"pos": "VPro3f"
+		"pos": "VPro3f",
+		"hint":"ta"
 	},
 	{
 		"word": "كلب",
 		"pos": "Nm",
-		"hint": "dog"
+		"hint": "dog|kalb"
 	},
 	{
 		"word": "لا",
 		"pos": "neg",
-		"hint": "not"
+		"hint": "not|La"
 	},
 	{
 		"word": "ة",
-		"pos": "Af"
+		"pos": "Af",
+		"hint": "Ta"
 	},
 	{
 		"word": "صغير",
 		"pos": "A",
-		"hint": "small"
+		"hint": "small|sagheer"
 	},
 	{
 		"word": "كبير",
 		"pos": "A",
-		"hint": "big"
+		"hint": "big|kabeer"
 	}
 ]
