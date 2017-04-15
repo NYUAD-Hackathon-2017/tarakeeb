@@ -40,5 +40,19 @@
 		"word": "لا",
 		"pos": "adverb",
 		"hint": "not"
+	},
+	{
+		"word": "ة",
+		"pos": "adjective_conjugatorf"
+	},
+	{
+		"word": "كبير",
+		"pos": "adjective",
+		"hint": "big"
+	},
+	{
+		"word": "صغير",
+		"pos": "adjective",
+		"hint": "small"
 	}
 ]

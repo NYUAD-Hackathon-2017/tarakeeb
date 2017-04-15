@@ -34,5 +34,13 @@
 	"adverb": {
 		"fill": "orange",
 		"stroke": "orange"
+	},
+	"adjective": {
+		"fill": "green",
+		"stroke": "green"
+	},
+	"adjective_conjugatorf": {
+		"fill": "darkgreen",
+		"stroke": "green"
 	}
 }
