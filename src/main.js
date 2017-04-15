@@ -59,13 +59,14 @@ function getTextWidth (text, font) {
 
 var forcesim;
 var collisionforce, centerforce, forcex, forcey;
+var WORDSPERROW = 4;
 function initwords() {
 	// initialize word positions
 	for (let i = 0; i < words.length; i++) {
-		words[i].x = randbetween(0, 800);
-		words[i].y = randbetween(0, 400);
+		words[i].x = i % WORDSPERROW * (800 / WORDSPERROW) + randbetween(-50, 50);
+		words[i].y = (600 / (words.length / WORDSPERROW)) + randbetween(-25, +25);
 		words[i].rot = randbetween(-30, 30);
-		words[i].fontsize = randbetween(70, 100);
+		words[i].fontsize = randbetween(70, 90);
 		words[i].currentsize = words[i].fontsize;
 	}
 
