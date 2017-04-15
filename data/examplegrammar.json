@@ -1,52 +1,76 @@
 [
-	["pronoun1", "subject_conjugator1", "root_transitive_verb", "determiner", "noun_f"],
-	["pronoun1", "subject_conjugator1", "root_transitive_verb", "determiner", "noun_m"],
-	["determiner", "noun_f", "subject_conjugator3f", "root_transitive_verb", "determiner", "noun_f"],
-	["determiner", "noun_f", "subject_conjugator3f", "root_transitive_verb", "determiner", "noun_m"],
-	["determiner", "noun_m", "subject_conjugator3m", "root_transitive_verb", "determiner", "noun_m"],
-	["determiner", "noun_m", "subject_conjugator3m", "root_transitive_verb", "determiner", "noun_f"],
+	["Pro1", "VPro1", "VtRoot", "D", "Nm"],
+	["Pro1", "VPro1", "VtRoot", "D", "Nm", "D", "A"],
+	["Pro1", "VPro1", "VtRoot", "D", "Nf"],
+	["Pro1", "VPro1", "VtRoot", "D", "Nf", "D", "A", "Af"],
+	["Pro1", "neg", "VPro1", "VtRoot", "D", "Nm"],
+	["Pro1", "neg", "VPro1", "VtRoot", "D", "Nm", "D", "A"],
+	["Pro1", "neg", "VPro1", "VtRoot", "D", "Nf"],
+	["Pro1", "neg", "VPro1", "VtRoot", "D", "Nf", "D", "A", "Af"],
 
-	["pronoun1", "adverb", "subject_conjugator1", "root_transitive_verb", "determiner", "noun_f"],
-	["pronoun1", "adverb", "subject_conjugator1", "root_transitive_verb", "determiner", "noun_m"],
-	["determiner", "noun_f", "adverb", "subject_conjugator3f", "root_transitive_verb", "determiner", "noun_f"],
-	["determiner", "noun_f", "adverb", "subject_conjugator3f", "root_transitive_verb", "determiner", "noun_m"],
-	["determiner", "noun_m", "adverb", "subject_conjugator3m", "root_transitive_verb", "determiner", "noun_m"],
-	["determiner", "noun_m", "adverb", "subject_conjugator3m", "root_transitive_verb", "determiner", "noun_f"],
+	["D", "Nm", "VPro3m", "VtRoot", "D", "Nm"],
+	["D", "Nm", "VPro3m", "VtRoot", "D", "Nm", "D", "A"],
+	["D", "Nm", "VPro3m", "VtRoot", "D", "Nf"],
+	["D", "Nm", "VPro3m", "VtRoot", "D", "Nf", "D", "A", "Af"],
+	["D", "Nm", "neg", "VPro3m", "VtRoot", "D", "Nm"],
+	["D", "Nm", "neg", "VPro3m", "VtRoot", "D", "Nm", "D", "A"],
+	["D", "Nm", "neg", "VPro3m", "VtRoot", "D", "Nf"],
+	["D", "Nm", "neg", "VPro3m", "VtRoot", "D", "Nf", "D", "A", "Af"],
 
+	["D", "Nm", "D", "A", "VPro3m", "VtRoot", "D", "Nm"],
+	["D", "Nm", "D", "A", "VPro3m", "VtRoot", "D", "Nm", "D", "A"],
+	["D", "Nm", "D", "A", "VPro3m", "VtRoot", "D", "Nf"],
+	["D", "Nm", "D", "A", "VPro3m", "VtRoot", "D", "Nf", "D", "A", "Af"],
+	["D", "Nm", "D", "A", "neg", "VPro3m", "VtRoot", "D", "Nm"],
+	["D", "Nm", "D", "A", "neg", "VPro3m", "VtRoot", "D", "Nm", "D", "A"],
+	["D", "Nm", "D", "A", "neg", "VPro3m", "VtRoot", "D", "Nf"],
+	["D", "Nm", "D", "A", "neg", "VPro3m", "VtRoot", "D", "Nf", "D", "A", "Af"],
 
+	["D", "Nf", "VPro3f", "VtRoot", "D", "Nm"],
+	["D", "Nf", "VPro3f", "VtRoot", "D", "Nm", "D", "A"],
+	["D", "Nf", "VPro3f", "VtRoot", "D", "Nf"],
+	["D", "Nf", "VPro3f", "VtRoot", "D", "Nf", "D", "A", "Af"],
+	["D", "Nf", "neg", "VPro3f", "VtRoot", "D", "Nm"],
+	["D", "Nf", "neg", "VPro3f", "VtRoot", "D", "Nm", "D", "A"],
+	["D", "Nf", "neg", "VPro3f", "VtRoot", "D", "Nf"],
+	["D", "Nf", "neg", "VPro3f", "VtRoot", "D", "Nf", "D", "A", "Af"],
 
+	["D", "Nf", "D", "A", "Af", "VPro3f", "VtRoot", "D", "Nm"],
+	["D", "Nf", "D", "A", "Af", "VPro3f", "VtRoot", "D", "Nm", "D", "A"],
+	["D", "Nf", "D", "A", "Af", "VPro3f", "VtRoot", "D", "Nf"],
+	["D", "Nf", "D", "A", "Af", "VPro3f", "VtRoot", "D", "Nf", "D", "A", "Af"],
+	["D", "Nf", "D", "A", "Af", "neg", "VPro3f", "VtRoot", "D", "Nm"],
+	["D", "Nf", "D", "A", "Af", "neg", "VPro3f", "VtRoot", "D", "Nm", "D", "A"],
+	["D", "Nf", "D", "A", "Af", "neg", "VPro3f", "VtRoot", "D", "Nf"],
+	["D", "Nf", "D", "A", "Af", "neg", "VPro3f", "VtRoot", "D", "Nf", "D", "A", "Af"],
 
+	["Pro1", "Nm"],
+	["Pro1", "Nm", "D", "A"],
+	["Pro1", "Nf"],
+	["Pro1", "Nf", "D", "A", "Af"],
+	["Pro1", "A"],
+	["Pro1", "A", "Af"],
 
-	["pronoun1", "subject_conjugator1", "root_transitive_verb", "determiner", "noun_f", "determiner", "adjective", "adjective_conjugatorf"],
-	["pronoun1", "subject_conjugator1", "root_transitive_verb", "determiner", "noun_m", "determiner", "adjective"],
+	["D", "Nm", "A"],
+	["D", "Nf", "A", "Af"],
 
+	["D", "Nm", "Nm"],
+	["D", "Nm", "Nf"],
+	["D", "Nf", "Nm"],
+	["D", "Nf", "Nf"],
 
-	["determiner", "noun_f", "determiner", "adjective", "adjective_conjugatorf", "subject_conjugator3f", "root_transitive_verb", "determiner", "noun_f"],
-	["determiner", "noun_f", "determiner", "adjective", "adjective_conjugatorf", "subject_conjugator3f", "root_transitive_verb", "determiner", "noun_m"],
-	["determiner", "noun_f", "determiner", "adjective", "adjective_conjugatorf", "subject_conjugator3f", "root_transitive_verb", "determiner", "noun_f", "determiner", "adjective", "adjective_conjugatorf"],
-	["determiner", "noun_f", "subject_conjugator3f", "root_transitive_verb", "determiner", "noun_f", "determiner", "adjective", "adjective_conjugatorf"],
-	["determiner", "noun_f", "determiner", "adjective", "adjective_conjugatorf", "subject_conjugator3f", "root_transitive_verb", "determiner", "noun_m", "determiner", "adjective"],
-	["determiner", "noun_f", "determiner", "adjective", "adjective_conjugatorf", "subject_conjugator3f", "root_transitive_verb", "determiner", "noun_f", "determiner", "adjective", "adjective_conjugatorf"],
+	["D", "Nm", "Nm", "A"],
+	["D", "Nm", "Nf", "A", "Af"],
+	["D", "Nf", "Nm", "A"],
+	["D", "Nf", "Nf", "A", "Af"],
 
+	["D", "Nm", "D", "A", "Nm"],
+	["D", "Nm", "D", "A", "Nf"],
+	["D", "Nf", "D", "A", "Af", "Nm"],
+	["D", "Nf", "D", "A", "Af", "Nf"],
 
-
-	["determiner", "noun_m", "determiner", "adjective", "subject_conjugator3f", "root_transitive_verb", "determiner", "noun_f"],
-	["determiner", "noun_m", "determiner", "adjective", "subject_conjugator3f", "root_transitive_verb", "determiner", "noun_m"],
-	["determiner", "noun_m", "determiner", "adjective", "subject_conjugator3f", "root_transitive_verb", "determiner", "noun_m", "determiner", "adjective"],
-	["determiner", "noun_m", "determiner", "adjective",  "subject_conjugator3f", "root_transitive_verb", "determiner", "noun_f", "determiner", "adjective", "adjective_conjugatorf"],
-	["determiner", "noun_m", "subject_conjugator3f", "root_transitive_verb", "determiner", "noun_f", "determiner", "adjective", "adjective_conjugatorf"],
-	
-
-	["pronoun1", "subject_conjugator1", "root_transitive_verb", "determiner", "noun_f", "determiner", "adjective", "adjective_conjugatorf"],
-	["pronoun1", "subject_conjugator1", "root_transitive_verb", "determiner", "noun_m","determiner", "adjective"],
-	["determiner", "noun_f", "subject_conjugator3f", "root_transitive_verb", "determiner", "noun_f",  "determiner", "adjective", "adjective_conjugatorf"],
-	["determiner", "noun_f", "subject_conjugator3f", "root_transitive_verb", "determiner", "noun_m","determiner", "adjective"],
-	["determiner", "noun_m", "subject_conjugator3m", "root_transitive_verb", "determiner", "noun_m",  "determiner", "adjective"],
-	["determiner", "noun_m", "subject_conjugator3m", "root_transitive_verb", "determiner", "noun_f",  "determiner", "adjective", "adjective_conjugatorf"]
-
-
-
-
-
-
+	["D", "Nm", "D", "A", "Nm", "A"],
+	["D", "Nm", "D", "A", "Nf", "A", "Af"],
+	["D", "Nf", "D", "A", "Af", "Nm", "A"],
+	["D", "Nf", "D", "A", "Af", "Nf", "A", "Af"]
 ]

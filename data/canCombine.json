@@ -1,7 +1,7 @@
 {
-	"determiner": "next",
-	"subject_conjugator1": "next",
-	"subject_conjugator3m": "next",
-	"subject_conjugator3f": "next",
-	"adjective_conjugatorf": "prev"
+	"D": "next",
+	"VPro1": "next",
+	"VPro3m": "next",
+	"VPro3f": "next",
+	"Af": "prev"
 }

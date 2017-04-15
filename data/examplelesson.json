@@ -1,58 +1,58 @@
 [
 	{
 		"word": "قطّة",
-		"pos": "noun_f",
+		"pos": "Nf",
 		"hint": "cat"
 	},
 	{
 		"word": "أنا",
-		"pos": "pronoun1",
+		"pos": "Pro1",
 		"hint": "I"
 	},
 	{
 		"word": "حب", 
-		"pos": "root_transitive_verb",
+		"pos": "VtRoot",
 		"hint": "like"
 	},
 	{
 		"word": "الـ",
-		"pos": "determiner",
+		"pos": "D",
 		"hint": "the"
 	},
 	{
 		"word": "أ",
-		"pos": "subject_conjugator1"
+		"pos": "VPro1"
 	},
 	{
 		"word": "يـ",
-		"pos": "subject_conjugator3m"
+		"pos": "VPro3m"
 	},
 	{
 		"word": "تـ",
-		"pos": "subject_conjugator3f"
+		"pos": "VPro3f"
 	},
 	{
 		"word": "كلب",
-		"pos": "noun_m",
+		"pos": "Nm",
 		"hint": "dog"
 	},
 	{
 		"word": "لا",
-		"pos": "adverb",
+		"pos": "neg",
 		"hint": "not"
 	},
 	{
 		"word": "ة",
-		"pos": "adjective_conjugatorf"
+		"pos": "Af"
 	},
 	{
 		"word": "صغير",
-		"pos": "adjective",
+		"pos": "A",
 		"hint": "small"
 	},
 	{
 		"word": "كبير",
-		"pos": "adjective",
+		"pos": "A",
 		"hint": "big"
 	}
 ]
