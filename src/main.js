@@ -11,6 +11,8 @@ var sentence = [];
 var clickbuffer = {};
 var LONGCLICKTIME = 400;
 
+var palettes = [];
+
 function loaddata(callback) {
 	d3.queue()
 	  .defer(d3.json, "json/examplecolors.json")
@@ -70,15 +72,27 @@ function initwords() {
 		words[i].currentsize = words[i].fontsize;
 	}
 
+	// add initial palettes
+	let examplePalettes = [
+		["Pro1", "VPro1", "VtRoot", "D", "Nm"],
+		["Pro1", "Nm", "D", "A"]
+	];
+	for (let i = 0; i < examplePalettes.length; i++) {
+		addToPalettesIfUnique(examplePalettes[i]);
+	}
+	redrawPalettes();
+
 	forcesim = d3.forceSimulation(words);
 	centerforce = d3.forceCenter(400, 300);
 	collisionforce = d3.forceCollide(function(d){
 		var size = getTextWidth(d.word, d.fontsize + "px sans serif");
 		return size;
 	});
+
 	forcesim.force("collision", collisionforce)
 			.force("x", forcex)
 			.force("y", forcey);
+
 	d3.select("#svg_words")
 	  .append("g")
 	  .classed("words", true)
@@ -369,6 +383,9 @@ function checkgrammar() {
 					// if correct, read it out
 					let s = putsentence_s();
 					responsiveVoice.speak(s, "Arabic Female", {rate: 0.75});
+					addToPalettesIfUnique(POSarray);
+					redrawPalettes();
+
 				} else {
 					d3.select("#result")
 					  .text("Incorrect");
@@ -379,4 +396,57 @@ function checkgrammar() {
 					  .text("");
 				}, 3000);
 	});
+}
+
+function arrayIsEquivalent(arr1, arr2) {
+	if (arr1.length != arr2.length) {
+		return false;
+	}
+	for (let i = 0; i < arr1.length; i++) {
+		if (arr1[i] != arr2[i]) {
+			return false;
+		}
+	}
+	return true;
+}
+
+function redrawPalettes() {
+	let palettecollection = d3.select("#palettecollection");
+	palettecollection
+	  .selectAll(".palette")
+	  .data(palettes)
+	  .enter()
+	  .append("div")
+	  .classed("palette", true)
+	  .selectAll(".singlecolor")
+	  .data(function(d){ return d; })
+	  .enter()
+	  .append("span")
+	  .classed("singlecolor", true)
+	  .text("💎")
+	  .style("text-shadow", function(d){
+  		return "0 0 0 " + d;
+	  });
+    d3.select("#palettescore")
+      .text(palettes.length);
+}
+
+function addToPalettesIfUnique(pos_sequence) {
+	var palette = palette_from_posArr(pos_sequence);
+	for (let i = 0; i < palettes.length; i++) {
+		if (arrayIsEquivalent(palette, palettes[i])) {
+			return;
+		}
+	}
+	// is unique!
+	palettes.push(palette);
+}
+
+function palette_from_posArr(pos_sequence) {
+	var palette = [];
+	for (let i = 0; i < pos_sequence.length; i++) {
+		let pos = pos_sequence[i];
+		palette.push(colors[pos].fill);
+	}
+	return palette;
 }
