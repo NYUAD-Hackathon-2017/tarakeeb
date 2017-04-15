@@ -109,9 +109,9 @@ function initwords() {
       .attr("id", "sentence_group")
       .append("text")
       .attr("id", "sentence_texttag")
-      .attr("transform", "translate(100, 50)");
-    d3.select("#svg_sentence")
-      .append("circle")
+      .attr("transform", "translate(180, 50)");
+    let svgsentence = d3.select("#svg_sentence");
+    svgsentence.append("circle")
       .attr("id", "grammarbutton")
       .attr("r", 40)
       .attr("cx", 40)
@@ -119,6 +119,34 @@ function initwords() {
       .style("fill", "#f39c12")
       .style("stroke", "#f39c12")
       .on("click", checkgrammar);
+    svgsentence.append("text")
+      .attr("id", "grammarbutton_text")
+      .attr("x", 0)
+      .attr("y", 50)
+      .style("font-size", 30)
+      .style("fill", "black")
+      .style("stroke", "black")
+      .text("Check!")
+      .style("pointer-events", "none");
+
+
+    svgsentence.append("circle")
+      .attr("id", "clearbutton")
+      .attr("r", 40)
+      .attr("cx", 130)
+      .attr("cy", 50)
+      .style("fill", "#f39c12")
+      .style("stroke", "#f39c12")
+      .on("click", checkgrammar);
+    svgsentence.append("text")
+      .attr("id", "clearbutton_text")
+      .attr("x", 100)
+      .attr("y", 50)
+      .style("font-size", 30)
+      .style("fill", "black")
+      .style("stroke", "black")
+      .text("Clear")
+      .style("pointer-events", "none");
 
     forcesim.on("tick", updatewords);
 }
