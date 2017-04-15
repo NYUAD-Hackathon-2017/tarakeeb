@@ -71,20 +71,27 @@ function putwords() {
 
 function putsentence() {
 	var sel = d3.select("#sentence_texttag");
+	var counter = 0;
 	sel.html("");
-	for(let i = 0; i < sentence.length; i++) {
-		let d = sentence[i];
-		sel.append("tspan")
-		   .classed(d[1], true)
-		   .classed("sentence_tspan", true)
-		   .text(d[0])
-		   .style("stroke", colors[d[1]].stroke)
-		   .style("fill", colors[d[1]].fill);
-	    sel.append("tspan")
-	       .classed("sentence_tspan", true)
-	       .classed("space", true)
-	       .text(" ");
-	}
+	sel.selectAll(".word_and_space")
+	   .data(sentence)
+	   .enter()
+	   .each(function(d, i){
+	   		let sel = d3.select(this);
+	   		sel.append("tspan")
+			   .classed(d[1], true)
+			   .classed("sentence_tspan", true)
+			   .text(d[0])
+			   .style("stroke", colors[d[1]].stroke)
+			   .style("fill", colors[d[1]].fill)
+			   .on("click", function(d){
+			   	  deleteWordFromSentence(d, i);
+			   });
+		    sel.append("tspan")
+		       .classed("sentence_tspan", true)
+		       .classed("space", true)
+		       .text(" ");
+	   });
 }
 
 function word_onmousedown(d, i) {
@@ -135,5 +142,10 @@ function word_onmouseup(d, i) {
 function pushWordToSentence(d) {
 	sentence.push(d);
 	console.log(d);
+	putsentence();
+}
+
+function deleteWordFromSentence(d, i) {
+	sentence.splice(i, 1);
 	putsentence();
 }

@@ -13,3 +13,7 @@ text {
         -ms-user-select: none;
             user-select: none;
 }
+
+.sentence_tspan:selection {
+	background: none;
+};
