@@ -1,0 +1,13 @@
+pronoun1	Pro1
+pronoun3m	Pro3m
+pronoun3f	Pro3f
+negation	neg
+determiner	D
+noun_m	Nm
+noun_f	Nf
+adjective	A
+adjective feminizer	Af
+transitive verb root	VtRoot
+verb conjugator 1	VPro1
+verb conjugator 3m	VPro3m
+verb conjugator 3f	VPro3f

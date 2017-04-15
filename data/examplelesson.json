@@ -1,58 +1,83 @@
 [
 	{
 		"word": "قطّة",
-		"pos": "noun_f",
-		"hint": "cat"
+		"pos": "Nf",
+		"hint": "cat|Kettah",
+		"pronounce": "قِطَّة"
 	},
 	{
 		"word": "أنا",
-		"pos": "pronoun1",
-		"hint": "I"
+		"pos": "Pro1",
+		"hint": "I|Anna",
+        "pronounce":"أَنا"
+
 	},
 	{
-		"word": "حب", 
-		"pos": "root_transitive_verb",
-		"hint": "like"
+		"word": "حب",
+		"pos": "VtRoot",
+		"hint": "like|hobb",
+        "pronounce":"حب"
+
 	},
 	{
 		"word": "الـ",
-		"pos": "determiner",
-		"hint": "the"
+		"pos": "D",
+		"hint": "the| Al",
+        "pronounce":"ال"
+
 	},
 	{
 		"word": "أ",
-		"pos": "subject_conjugator1"
+		"pos": "VPro1",
+		"hint": "A",
+        "pronounce":"أ"
+
 	},
 	{
 		"word": "يـ",
-		"pos": "subject_conjugator3m"
+		"pos": "VPro3m",
+		"hint":"E",
+        "pronounce":"ي"
+
 	},
 	{
 		"word": "تـ",
-		"pos": "subject_conjugator3f"
+		"pos": "VPro3f",
+		"hint":"ta",
+        "pronounce":"ت"
 	},
 	{
 		"word": "كلب",
-		"pos": "noun_m",
-		"hint": "dog"
+		"pos": "Nm",
+		"hint": "dog|kalb",
+        "pronounce":"كلب"
+
 	},
 	{
 		"word": "لا",
-		"pos": "adverb",
-		"hint": "not"
+		"pos": "neg",
+		"hint": "not|La",
+        "pronounce":"لا"
+
 	},
 	{
 		"word": "ة",
-		"pos": "adjective_conjugatorf"
+		"pos": "Af",
+		"hint": "Ta",
+        "pronounce":"ة"
+
 	},
 	{
 		"word": "صغير",
-		"pos": "adjective",
-		"hint": "small"
+		"pos": "A",
+		"hint": "small|sagheer",
+        "pronounce":"صغير"
 	},
 	{
 		"word": "كبير",
-		"pos": "adjective",
-		"hint": "big"
+		"pos": "A",
+		"hint": "big|kabeer",
+        "pronounce":"كبير"
+
 	}
 ]

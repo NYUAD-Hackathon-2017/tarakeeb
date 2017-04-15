@@ -1,51 +1,46 @@
 {
-	"pronoun1": {
+	"Pro1": {
 		"fill": "darkblue",
 		"stroke": "darkblue"
 	},
-	"noun_m": {
+	"Nm": {
 		"fill": "CornflowerBlue",
 		"stroke": "darkblue"
 	},
-	"noun_f": {
+	"Nf": {
 		"fill": "CornflowerBlue",
 		"stroke": "darkblue"
 	},
-	"root_transitive_verb": {
+	"VtRoot": {
 		"fill": "red",
 		"stroke": "red"
 	},
-	"determiner": {
+	"D": {
 		"fill": "darkgrey",
 		"stroke": "darkgrey"
 	},
-	"subject_conjugator1": {
+	"VPro1": {
 		"fill": "#fc4444",
 		"stroke": "#fc4444"
 	},
-	"subject_conjugator3m": {
+	"VPro3m": {
 		"fill": "#fc4444",
 		"stroke": "#fc4444"
 	},
-	"subject_conjugator3f": {
+	"VPro3f": {
 		"fill": "#fc4444",
 		"stroke": "#fc4444"
 	},
-	"adverb": {
+	"neg": {
 		"fill": "orange",
 		"stroke": "orange"
 	},
-	"adjective": {
+	"A": {
 		"fill": "green",
 		"stroke": "green"
 	},
-	"adjective_conjugatorf": {
+	"Af": {
 		"fill": "#27E469",
 		"stroke": "green"
-	},
-	"adjective": {
-		"fill": "#27E469",
-		"stroke": "#27E469"
 	}
-
 }
