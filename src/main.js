@@ -115,17 +115,14 @@ function word_onmouseup(d, i) {
 	clickbuffer[key].end = new Date().getTime();
 	clickbuffer[key].mouseup++;
 	// First, wait for a potential second click
-	if (clickbuffer[key].mouseup >= 2) {
-		clearTimeout(doubleclick);
-		pushWordToSentence(d);
-		delete clickbuffer[key];
-	} else {
+	// if (clickbuffer[key].mouseup >= 2) {
+	// 	clearTimeout(doubleclick);
+	// 	pushWordToSentence(d);
+	// 	delete clickbuffer[key];
+	// } else {
 		doubleclick = window.setTimeout(function(){
 			// long click
 			if (clickbuffer[key].end - clickbuffer[key].start > LONGCLICKTIME) {
-				pushWordToSentence(d);
-			} else {
-				// short click
 				clearTimeout(deletemeaning);
 				d3.select("#meaning")
 				  .text(d[2]);
@@ -133,10 +130,13 @@ function word_onmouseup(d, i) {
 					d3.select("#meaning")
 					  .text("");
 				}, 800);
+			} else {
+				pushWordToSentence(d);
+				// short click
 			}
 			delete clickbuffer[key];
 		}, 150);
-	}
+	// }
 }
 
 function pushWordToSentence(d) {
