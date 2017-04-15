@@ -197,6 +197,26 @@ function putsentence() {
 	   });
 }
 
+// instead of drawing on the svg, make a string
+function putsentence_s() {
+	let out = "";
+	for (let i = 0; i < sentence.length; i++) {
+		let d = sentence[i];
+
+		out += d.word.pronounce;
+
+	    var condition1 = d.isConjugatedNext;
+	    var condition2 = (i+1 < sentence.length) && sentence[i+1].isConjugatedPrev;
+
+	    if (condition1 || condition2)
+			{}
+		else {
+		    out += " ";			
+		}
+	}
+	return out;
+}
+
 function word_onmousedown(d, i) {
 	var key = d.word + d.pos;
 	if (key in clickbuffer) {
@@ -229,10 +249,12 @@ function word_onmouseup(d, i) {
 				clearTimeout(deletemeaning);
 				d3.select("#meaning")
 				  .text(d.hint);
+				// also read it out
+				responsiveVoice.speak(d.pronounce,"Arabic Female", {rate: 0.75});
 				deletemeaning = window.setTimeout(function(){
 					d3.select("#meaning")
 					  .text("");
-				}, 800);
+				}, 1600);
 			} else {
 				pushWordToSentence(d);
 				// short click
@@ -284,6 +306,9 @@ function checkgrammar() {
 				if (data[0]) {
 					d3.select("#result")
 					  .text("Correct!");
+					// if correct, read it out
+					let s = putsentence_s();
+					responsiveVoice.speak(s, "Arabic Female", {rate: 0.75});
 				} else {
 					d3.select("#result")
 					  .text("Incorrect");
