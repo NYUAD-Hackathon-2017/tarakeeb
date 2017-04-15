@@ -40,25 +40,44 @@ var d3key = function(d) {
 	return d.key + d.pos;
 }
 
+/**
+ * Uses canvas.measureText to compute and return the width of the given text of given font in pixels.
+ * 
+ * @param {String} text The text to be rendered.
+ * @param {String} font The css font descriptor that text is to be rendered with (e.g. "bold 14px verdana").
+ * 
+ * @see http://stackoverflow.com/questions/118241/calculate-text-width-with-javascript/21015393#21015393
+ */
+function getTextWidth (text, font) {
+	// re-use canvas object for better performance
+	var canvas = getTextWidth.canvas || (getTextWidth.canvas = document.createElement("canvas"));
+	var context = canvas.getContext("2d");
+	context.font = font;
+	var metrics = context.measureText(text);
+	return metrics.width;
+};
+
 var forcesim;
-var collisionforce, centerforce;
+var collisionforce, centerforce, forcex, forcey;
 function initwords() {
 	// initialize word positions
 	for (let i = 0; i < words.length; i++) {
-		words[i].x = randbetween(100, 700);
-		words[i].y = randbetween(100, 300);
+		words[i].x = randbetween(0, 800);
+		words[i].y = randbetween(0, 400);
 		words[i].rot = randbetween(-30, 30);
+		words[i].fontsize = randbetween(70, 100);
 	}
 
 	forcesim = d3.forceSimulation(words);
-	collisionforce = d3.forceCollide(function(d){
-		return 50;
-	});
 	centerforce = d3.forceCenter(400, 300);
+	collisionforce = d3.forceCollide(function(d){
+		var size = getTextWidth(d.word, d.fontsize + "px sans serif");
+		return size;
+	});
 	forcesim.force("collision", collisionforce)
-			.force("center", centerforce)
-	        .alphaDecay(0.01);
-	d3.select("svg")
+			.force("x", forcex)
+			.force("y", forcey);
+	d3.select("#svg_words")
 	  .append("g")
 	  .classed("words", true)
 	  .selectAll("text")
@@ -79,22 +98,24 @@ function initwords() {
 	  	var rotate = "rotate(" + d.rot + ")";
 	  	return translate + " " + rotate;
 	  })
-	  .style("font-size", randbetween(70, 100))
+	  .style("font-size", function(d){
+	  	return d.fontsize;
+	  })
 	  .on("mousedown", word_onmousedown)
 	  .on("mouseup", word_onmouseup);
 
-    d3.select("svg")
+    d3.select("#svg_sentence")
       .append("g")
       .attr("id", "sentence_group")
       .append("text")
       .attr("id", "sentence_texttag")
-      .attr("transform", "translate(100, 570)");
-    d3.select("svg")
+      .attr("transform", "translate(100, 50)");
+    d3.select("#svg_sentence")
       .append("circle")
       .attr("id", "grammarbutton")
       .attr("r", 40)
       .attr("cx", 40)
-      .attr("cy", 600-40)
+      .attr("cy", 50)
       .style("fill", "blue")
       .style("stroke", "black")
       .on("click", checkgrammar);
@@ -103,6 +124,34 @@ function initwords() {
 }
 
 function updatewords() {
+	// Next, recenter svg on words using viewBox
+	let minX = words[0].x; 
+	let maxX = words[0].x;
+	let minY = words[0].y;
+	let maxY = words[0].y;
+	for (let i = 0; i < words.length; i++) {
+		let r = words[i].fontsize * 1.1;
+		let x = words[i].x;
+		let y = words[i].y;
+		if (x - r < minX) {
+			minX = x - r;
+		}
+		if (x + r > maxX) {
+			maxX = x + r;
+		}
+		if (y - r < minY) {
+			minY = y - r;
+		}
+		if (y - r > maxY) {
+			maxY = y - r;
+		}
+	}
+	let width  = maxX - minX;
+	let height = maxY - minY;
+
+	d3.select("#svg_words")
+	  .attr("viewBox", minX + " " + minY + " " + width + " " + height);
+
 	d3.select(".words")
 	  .selectAll("text")
 	  .data(words, d3key)
