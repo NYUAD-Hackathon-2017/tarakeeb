@@ -66,6 +66,7 @@ function initwords() {
 		words[i].y = randbetween(0, 400);
 		words[i].rot = randbetween(-30, 30);
 		words[i].fontsize = randbetween(70, 100);
+		words[i].currentsize = words[i].fontsize;
 	}
 
 	forcesim = d3.forceSimulation(words);
@@ -99,10 +100,12 @@ function initwords() {
 	  	return translate + " " + rotate;
 	  })
 	  .style("font-size", function(d){
-	  	return d.fontsize;
+	  	return d.currentsize;
 	  })
 	  .on("mousedown", word_onmousedown)
-	  .on("mouseup", word_onmouseup);
+	  .on("mouseup", word_onmouseup)
+	  .on("mouseover", word_onmouseover)
+	  .on("mouseout", word_onmouseout);
 
     d3.select("#svg_sentence")
       .append("g")
@@ -186,6 +189,9 @@ function updatewords() {
 	d3.select(".words")
 	  .selectAll("text")
 	  .data(words, d3key)
+	  .style("font-size", function(d){
+	  	return d.currentsize;
+	  })
 	  .attr("transform", function(d){
 	  	var translate = "translate(" + d.x + 
 	  		"," + d.y + ")";
@@ -295,9 +301,21 @@ function word_onmouseup(d, i) {
 	// }
 }
 
-function isCombinable(pos1, pos2) {
-	 if(pos1 in conjugations)
-	 	return conjugations[pos1];
+function word_onmouseover(d, i) {
+	let sel = d3.select(this);
+	sel.transition()
+	   .style("font-size", d.fontsize * 1.2);
+}
+
+function word_onmouseout(d, i) {
+	let sel = d3.select(this);
+	sel.transition()
+	   .style("font-size", d.fontsize);
+}
+
+function isCombinable(pos) {
+	if(pos in conjugations)
+	 	return conjugations[pos];
  	return false;
 }
 
@@ -306,8 +324,8 @@ function pushWordToSentence(d) {
 	var sentenceword = {word:d, isConjugatedPrev:false, isConjugatedNext:false};
 	sentence.push(sentenceword);
 	// next, do a pass over the sentence to combine things that can combine.
-	for (let i = 0; i < sentence.length - 1; i++) {
-		var result = isCombinable(sentence[i].word.pos, sentence[i+1].word.pos);
+	for (let i = 0; i < sentence.length; i++) {
+		var result = isCombinable(sentence[i].word.pos);
 		if (result == "next") {
 			sentence[i].isConjugatedNext = true;
 		} else if (result == "prev") {
