@@ -1,3 +1,15 @@
 text {
 	font-family: "Open Sans", sans-serif;
 }
+
+#meaning {
+	font-size: 80px;
+}
+
+.sentence_tspan {
+	font-size: 60px;
+    -webkit-user-select: none;
+       -moz-user-select: none;
+        -ms-user-select: none;
+            user-select: none;
+}

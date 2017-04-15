@@ -1,5 +1,5 @@
 [
-	["قطّة", "noun"],
-	["أنا", "pronoun"],
-	["أخبر", "transitive verb"]
+	["قطّة", "noun", "cat"],
+	["أنا", "pronoun", "I"],
+	["أخبر", "transitive_verb", "like"]
 ]

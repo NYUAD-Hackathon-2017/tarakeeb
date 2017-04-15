@@ -7,6 +7,10 @@ var grammar_simple = null;
 var wordclass      = null;
 var words          = null;
 
+var sentence = [];
+var clickbuffer = {};
+var LONGCLICKTIME = 400;
+
 function loaddata(callback) {
 	d3.queue()
 	  .defer(d3.json, "json/examplecolors.json")
@@ -54,5 +58,82 @@ function putwords() {
 	  	var rotate = "rotate(" + randbetween(-30, 30) + ")";
 	  	return translate + " " + rotate;
 	  })
-	  .style("font-size", randbetween(70, 100));
+	  .style("font-size", randbetween(70, 100))
+	  .on("mousedown", word_onmousedown)
+	  .on("mouseup", word_onmouseup);
+    d3.select("svg")
+      .append("g")
+      .attr("id", "sentence_group")
+      .append("text")
+      .attr("id", "sentence_texttag")
+      .attr("transform", "translate(0, 450)");
+}
+
+function putsentence() {
+	var sel = d3.select("#sentence_texttag");
+	sel.html("");
+	for(let i = 0; i < sentence.length; i++) {
+		let d = sentence[i];
+		sel.append("tspan")
+		   .classed(d[1], true)
+		   .classed("sentence_tspan", true)
+		   .text(d[0])
+		   .style("stroke", colors[d[1]].stroke)
+		   .style("fill", colors[d[1]].fill);
+	    sel.append("tspan")
+	       .classed("sentence_tspan", true)
+	       .classed("space", true)
+	       .text(" ");
+	}
+}
+
+function word_onmousedown(d, i) {
+	var key = d[0] + d[1];
+	if (key in clickbuffer) {
+		clickbuffer[key].mousedown++;
+	} else {
+		clickbuffer[key] = {
+		"start": new Date().getTime(),
+		"end": null,
+		"mousedown": 1,
+		"mouseup": 0
+		}
+	}	
+}
+
+var deletemeaning;
+var doubleclick;
+function word_onmouseup(d, i) {
+	var key = d[0] + d[1];
+	clickbuffer[key].end = new Date().getTime();
+	clickbuffer[key].mouseup++;
+	// First, wait for a potential second click
+	if (clickbuffer[key].mouseup >= 2) {
+		clearTimeout(doubleclick);
+		pushWordToSentence(d);
+		delete clickbuffer[key];
+	} else {
+		doubleclick = window.setTimeout(function(){
+			// long click
+			if (clickbuffer[key].end - clickbuffer[key].start > LONGCLICKTIME) {
+				pushWordToSentence(d);
+			} else {
+				// short click
+				clearTimeout(deletemeaning);
+				d3.select("#meaning")
+				  .text(d[2]);
+				deletemeaning = window.setTimeout(function(){
+					d3.select("#meaning")
+					  .text("");
+				}, 800);
+			}
+			delete clickbuffer[key];
+		}, 150);
+	}
+}
+
+function pushWordToSentence(d) {
+	sentence.push(d);
+	console.log(d);
+	putsentence();
 }
