@@ -20,6 +20,31 @@
 
 <body dir="rtl" lang="ar">
 
+	<div class="modal fade bs-example-modal-sm ins-modal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+	  <div class="modal-dialog modal-sm" role="document">
+	    <div class="modal-content">
+				<ul id="instruct">
+					<li>
+						<p>
+							<img id="tap" src="tap.png" /> مرة واحدة للإضافة والحذف
+						</p>
+					</li>
+					<li>
+						<p>
+							<img id="tap" src="tap2.svg" /> مرتان لسماع الكلمة
+						</p>
+					</li>
+					<li>
+						<p>
+							<img id="legend" src="testcolor.svg" />
+						</p>
+					</li>
+
+				</ul>
+	    </div>
+	  </div>
+	</div>
+
 	<div class="container-fluid">
  		<div class="row">
 	  	
@@ -44,6 +69,7 @@
   				<hr>
 
   				<div class="user-info">
+  					<button type="button" id="inst-btn" class="btn btn-primary question" data-toggle="modal" data-target=".bs-example-modal-sm">?</button>
   					<h3 class="student-name"><span style="font-weight: bold;">الأسم:</span> فهمي</h3>
   					<h3 class="student-name"><span style="font-weight: bold;">النقاط:</span> <span id="palettescore">10</span></h3>
   				</div>

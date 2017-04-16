@@ -31,8 +31,8 @@ function loaddata(callback) {
 
 var SoundPlayer;
 function init() {
-	
-		loaddata(initwords);
+	loaddata(initwords);
+	$(".ins-modal").modal();
 }
 
 function randbetween(a, b) {
