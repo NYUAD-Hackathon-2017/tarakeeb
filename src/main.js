@@ -166,12 +166,12 @@ function initwords() {
       });
     svgsentence.append("text")
       .attr("id", "clearbutton_text")
-      .attr("x", 113)
+      .attr("x", 103)
       .attr("y", 55)
       .style("font-size", 25)
       .style("fill", "white")
       .style("stroke", "white")
-      .text("أزل")
+      .text("إمسح")
       .style("pointer-events", "none");
 
     forcesim.on("tick", updatewords);
