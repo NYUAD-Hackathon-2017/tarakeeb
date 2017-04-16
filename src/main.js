@@ -11,6 +11,8 @@ var sentence = [];
 var clickbuffer = {};
 var LONGCLICKTIME = 400;
 
+var palettes = [];
+
 function loaddata(callback) {
 	d3.queue()
 	  .defer(d3.json, "json/examplecolors.json")
@@ -59,14 +61,26 @@ function getTextWidth (text, font) {
 
 var forcesim;
 var collisionforce, centerforce, forcex, forcey;
+var WORDSPERROW = 4;
 function initwords() {
 	// initialize word positions
 	for (let i = 0; i < words.length; i++) {
-		words[i].x = randbetween(0, 800);
-		words[i].y = randbetween(0, 400);
+		words[i].x = i % WORDSPERROW * (800 / WORDSPERROW) + randbetween(-50, 50);
+		words[i].y = (600 / (words.length / WORDSPERROW)) + randbetween(-25, +25);
 		words[i].rot = randbetween(-30, 30);
-		words[i].fontsize = randbetween(70, 100);
+		words[i].fontsize = randbetween(70, 90);
+		words[i].currentsize = words[i].fontsize;
 	}
+
+	// add initial palettes
+	let examplePalettes = [
+		["Pro1", "VPro1", "VtRoot", "D", "Nm"],
+		["Pro1", "Nm", "D", "A"]
+	];
+	for (let i = 0; i < examplePalettes.length; i++) {
+		addToPalettesIfUnique(examplePalettes[i]);
+	}
+	redrawPalettes();
 
 	forcesim = d3.forceSimulation(words);
 	centerforce = d3.forceCenter(400, 300);
@@ -74,9 +88,11 @@ function initwords() {
 		var size = getTextWidth(d.word, d.fontsize + "px sans serif");
 		return size;
 	});
+
 	forcesim.force("collision", collisionforce)
 			.force("x", forcex)
 			.force("y", forcey);
+
 	d3.select("#svg_words")
 	  .append("g")
 	  .classed("words", true)
@@ -99,10 +115,12 @@ function initwords() {
 	  	return translate + " " + rotate;
 	  })
 	  .style("font-size", function(d){
-	  	return d.fontsize;
+	  	return d.currentsize;
 	  })
 	  .on("mousedown", word_onmousedown)
-	  .on("mouseup", word_onmouseup);
+	  .on("mouseup", word_onmouseup)
+	  .on("mouseover", word_onmouseover)
+	  .on("mouseout", word_onmouseout);
 
     d3.select("#svg_sentence")
       .append("g")
@@ -128,7 +146,12 @@ function initwords() {
       .style("stroke", "white")
       .text("تأكد")
       .style("pointer-events", "none");
-
+    svgsentence.append("line")
+      .attr("id", "divider")
+      .attr("x1", -1000)
+      .attr("x2",  1000)
+      .attr("y1", 0)
+      .attr("y2", 0);
 
     svgsentence.append("circle")
       .attr("id", "clearbutton")
@@ -137,7 +160,10 @@ function initwords() {
       .attr("cy", 50)
       .style("fill", "#f39c12")
       .style("stroke", "#f39c12")
-      .on("click", checkgrammar);
+      .on("click", function(){
+      	  sentence = [];
+      	  putsentence(); 
+      });
     svgsentence.append("text")
       .attr("id", "clearbutton_text")
       .attr("x", 113)
@@ -256,7 +282,7 @@ function word_onmousedown(d, i) {
 		"mousedown": 1,
 		"mouseup": 0
 		}
-	}	
+	}
 }
 
 var deletemeaning;
@@ -266,35 +292,55 @@ function word_onmouseup(d, i) {
 	clickbuffer[key].end = new Date().getTime();
 	clickbuffer[key].mouseup++;
 	// First, wait for a potential second click
-	// if (clickbuffer[key].mouseup >= 2) {
-	// 	clearTimeout(doubleclick);
-	// 	pushWordToSentence(d);
-	// 	delete clickbuffer[key];
-	// } else {
+	if (clickbuffer[key].mouseup >= 2) {
+		clearTimeout(doubleclick);
+		// also read it out
+		responsiveVoice.speak(d.pronounce,"Arabic Female", {rate: 0.75});
+		delete clickbuffer[key];
+	} else {
 		doubleclick = window.setTimeout(function(){
+			pushWordToSentence(d);
 			// long click
-			if (clickbuffer[key].end - clickbuffer[key].start > LONGCLICKTIME) {
-				clearTimeout(deletemeaning);
-				d3.select("#meaning")
-				  .text(d.hint);
-				// also read it out
-				responsiveVoice.speak(d.pronounce,"Arabic Female", {rate: 0.75});
-				deletemeaning = window.setTimeout(function(){
-					d3.select("#meaning")
-					  .text("");
-				}, 1600);
-			} else {
-				pushWordToSentence(d);
-				// short click
-			}
+			// if (clickbuffer[key].end - clickbuffer[key].start > LONGCLICKTIME) {
+			// 	clearTimeout(deletemeaning);
+			// 	d3.select("#meaning")
+			// 	  .text(d.hint);
+			// 	deletemeaning = window.setTimeout(function(){
+			// 		d3.select("#meaning")
+			// 		  .text("");
+			// 	}, 1600);
+			// } else {
+			// 	pushWordToSentence(d);
+			// 	// short click
+			// }
 			delete clickbuffer[key];
-		}, 150);
-	// }
+		}, 250);
+    }
 }
 
-function isCombinable(pos1, pos2) {
-	 if(pos1 in conjugations)
-	 	return conjugations[pos1];
+function word_onmouseover(d, i) {
+	let sel = d3.select(this);
+	sel.transition()
+	   .style("font-size", d.fontsize * 1.2);
+
+    clearTimeout(deletemeaning);
+	d3.select("#meaning")
+	  .text(d.hint);
+	deletemeaning = window.setTimeout(function(){
+		d3.select("#meaning")
+		  .text("");
+	}, 1600);
+}
+
+function word_onmouseout(d, i) {
+	let sel = d3.select(this);
+	sel.transition()
+	   .style("font-size", d.fontsize);
+}
+
+function isCombinable(pos) {
+	if(pos in conjugations)
+	 	return conjugations[pos];
  	return false;
 }
 
@@ -303,8 +349,8 @@ function pushWordToSentence(d) {
 	var sentenceword = {word:d, isConjugatedPrev:false, isConjugatedNext:false};
 	sentence.push(sentenceword);
 	// next, do a pass over the sentence to combine things that can combine.
-	for (let i = 0; i < sentence.length - 1; i++) {
-		var result = isCombinable(sentence[i].word.pos, sentence[i+1].word.pos);
+	for (let i = 0; i < sentence.length; i++) {
+		var result = isCombinable(sentence[i].word.pos);
 		if (result == "next") {
 			sentence[i].isConjugatedNext = true;
 		} else if (result == "prev") {
@@ -337,6 +383,9 @@ function checkgrammar() {
 					// if correct, read it out
 					let s = putsentence_s();
 					responsiveVoice.speak(s, "Arabic Female", {rate: 0.75});
+					addToPalettesIfUnique(POSarray);
+					redrawPalettes();
+
 				} else {
 					d3.select("#result")
 					  .text("حاول مرة اخرى");
@@ -347,4 +396,57 @@ function checkgrammar() {
 					  .text("");
 				}, 3000);
 	});
+}
+
+function arrayIsEquivalent(arr1, arr2) {
+	if (arr1.length != arr2.length) {
+		return false;
+	}
+	for (let i = 0; i < arr1.length; i++) {
+		if (arr1[i] != arr2[i]) {
+			return false;
+		}
+	}
+	return true;
+}
+
+function redrawPalettes() {
+	let palettecollection = d3.select("#palettecollection");
+	palettecollection
+	  .selectAll(".palette")
+	  .data(palettes)
+	  .enter()
+	  .append("div")
+	  .classed("palette", true)
+	  .selectAll(".singlecolor")
+	  .data(function(d){ return d; })
+	  .enter()
+	  .append("span")
+	  .classed("singlecolor", true)
+	  .text("💎")
+	  .style("text-shadow", function(d){
+  		return "0 0 0 " + d;
+	  });
+    d3.select("#palettescore")
+      .text(palettes.length);
+}
+
+function addToPalettesIfUnique(pos_sequence) {
+	var palette = palette_from_posArr(pos_sequence);
+	for (let i = 0; i < palettes.length; i++) {
+		if (arrayIsEquivalent(palette, palettes[i])) {
+			return;
+		}
+	}
+	// is unique!
+	palettes.push(palette);
+}
+
+function palette_from_posArr(pos_sequence) {
+	var palette = [];
+	for (let i = 0; i < pos_sequence.length; i++) {
+		let pos = pos_sequence[i];
+		palette.push(colors[pos].fill);
+	}
+	return palette;
 }

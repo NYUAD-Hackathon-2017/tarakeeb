@@ -2,81 +2,81 @@
 	{
 		"word": "قطّة",
 		"pos": "Nf",
-		"hint": "cat|Kettah",
+		"hint": "cat | kettah",
 		"pronounce": "قِطَّة"
 	},
 	{
 		"word": "أنا",
 		"pos": "Pro1",
-		"hint": "I|Anna",
+		"hint": "I | anna",
         "pronounce":"أَنا"
 
 	},
 	{
 		"word": "حب",
 		"pos": "VtRoot",
-		"hint": "like|hobb",
+		"hint": "like | hobb",
         "pronounce":"حب"
 
 	},
 	{
 		"word": "الـ",
 		"pos": "D",
-		"hint": "the| Al",
+		"hint": "the | al",
         "pronounce":"ال"
 
 	},
 	{
 		"word": "أ",
 		"pos": "VPro1",
-		"hint": "A",
+		"hint": "~ | A",
         "pronounce":"أ"
 
 	},
 	{
 		"word": "يـ",
 		"pos": "VPro3m",
-		"hint":"E",
+		"hint":"~ | E",
         "pronounce":"ي"
 
 	},
 	{
 		"word": "تـ",
 		"pos": "VPro3f",
-		"hint":"ta",
+		"hint":"~ | ta",
         "pronounce":"ت"
 	},
 	{
 		"word": "كلب",
 		"pos": "Nm",
-		"hint": "dog|kalb",
+		"hint": "dog | kalb",
         "pronounce":"كلب"
 
 	},
 	{
 		"word": "لا",
 		"pos": "neg",
-		"hint": "not|La",
+		"hint": "not | La",
         "pronounce":"لا"
 
 	},
 	{
 		"word": "ة",
 		"pos": "Af",
-		"hint": "Ta",
+		"hint": "~ | ta",
         "pronounce":"ة"
 
 	},
 	{
 		"word": "صغير",
 		"pos": "A",
-		"hint": "small|sagheer",
+		"hint": "small | sagheer",
         "pronounce":"صغير"
 	},
 	{
 		"word": "كبير",
 		"pos": "A",
-		"hint": "big|kabeer",
+		"hint": "big | kabeer",
         "pronounce":"كبير"
 
 	}
