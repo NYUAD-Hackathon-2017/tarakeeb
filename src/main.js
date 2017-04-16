@@ -31,6 +31,7 @@ function loaddata(callback) {
 
 function init() {
 	loaddata(initwords);
+	$(".ins-modal").modal();
 }
 
 function randbetween(a, b) {
@@ -139,15 +140,9 @@ function initwords() {
       .on("click", checkgrammar);
     svgsentence.append("text")
       .attr("id", "grammarbutton_text")
-<<<<<<< Updated upstream
-      .attr("x", 22)
-      .attr("y", 55)
-      .style("font-size", 20)
-=======
       .attr("x", 16)
       .attr("y", 55)
       .style("font-size", 28)
->>>>>>> Stashed changes
       .style("fill", "white")
       .style("stroke", "white")
       .text("تأكد")
@@ -173,15 +168,9 @@ function initwords() {
       });
     svgsentence.append("text")
       .attr("id", "clearbutton_text")
-<<<<<<< Updated upstream
-      .attr("x", 103)
-      .attr("y", 55)
-      .style("font-size", 25)
-=======
       .attr("x", 100)
       .attr("y", 55)
       .style("font-size", 28)
->>>>>>> Stashed changes
       .style("fill", "white")
       .style("stroke", "white")
       .text("إمسح")
