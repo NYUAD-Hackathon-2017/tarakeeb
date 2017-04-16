@@ -29,8 +29,10 @@ function loaddata(callback) {
 	  });
 }
 
+var SoundPlayer;
 function init() {
-	loaddata(initwords);
+	
+		loaddata(initwords);
 }
 
 function randbetween(a, b) {
@@ -357,7 +359,6 @@ function pushWordToSentence(d) {
 			sentence[i].isConjugatedPrev = true;
 		}
 	}
-	console.log(d);
 	putsentence();
 }
 
@@ -426,7 +427,13 @@ function redrawPalettes() {
 	  .text("💎")
 	  .style("text-shadow", function(d){
   		return "0 0 0 " + d;
-	  });
+	  })
+	  .style("opacity", 0)		
+	  .transition()
+	  .delay(function(d, i){
+	  	  return 400 * i;
+	  })
+	  .style("opacity", 1);
     d3.select("#palettescore")
       .text(palettes.length);
 }

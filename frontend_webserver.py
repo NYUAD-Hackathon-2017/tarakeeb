@@ -21,7 +21,7 @@ def equivarray(a, b):
 
 @app.route('/')
 def hello_world():
-    return 'Hello, World!'
+    return flask.send_from_directory('src', "main.html")
 
 @app.route('/json/<path:path>')
 def send_json(path):
@@ -41,3 +41,7 @@ def grammarcheck():
 @app.route('/<path:path>')
 def serve_page(path):
     return flask.send_from_directory('src', path)
+
+@app.route('/res/<path:path>')
+def serve_resource(path):
+    return flask.send_from_directory('res', path)
