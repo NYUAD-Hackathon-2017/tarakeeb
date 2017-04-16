@@ -1,46 +1,35 @@
 {
 	"Pro1": {
-		"fill": "darkblue",
-		"stroke": "darkblue"
+		"fill": "darkblue"
 	},
 	"Nm": {
-		"fill": "CornflowerBlue",
-		"stroke": "darkblue"
+		"fill": "CornflowerBlue"
 	},
 	"Nf": {
-		"fill": "CornflowerBlue",
-		"stroke": "darkblue"
+		"fill": "CornflowerBlue"
 	},
 	"VtRoot": {
-		"fill": "red",
-		"stroke": "red"
+		"fill": "red"
 	},
 	"D": {
-		"fill": "darkgrey",
-		"stroke": "darkgrey"
+		"fill": "darkgrey"
 	},
 	"VPro1": {
-		"fill": "#fc4444",
-		"stroke": "#fc4444"
+		"fill": "#fc4444"
 	},
 	"VPro3m": {
-		"fill": "#fc4444",
-		"stroke": "#fc4444"
+		"fill": "#fc4444"
 	},
 	"VPro3f": {
-		"fill": "#fc4444",
-		"stroke": "#fc4444"
+		"fill": "#fc4444"
 	},
 	"neg": {
-		"fill": "orange",
-		"stroke": "orange"
+		"fill": "orange"
 	},
 	"A": {
-		"fill": "green",
-		"stroke": "green"
+		"fill": "green"
 	},
 	"Af": {
-		"fill": "#27E469",
-		"stroke": "green"
+		"fill": "#27E469"
 	}
 }

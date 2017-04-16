@@ -3,7 +3,7 @@ text {
 }
 
 #meaning {
-	font-size: 80px;
+	font-size: 30px;
 }
 
 .sentence_tspan {
@@ -32,7 +32,7 @@ text {
 }
 
 #result {
-	font-size: 60px;
+	font-size: 30px;
 }
 
 @font-face {
@@ -47,12 +47,12 @@ body{
 
 .box{
 	width: 900px;
-	height: 750px;
+	height: 630px;
 	margin: auto;
+	margin-left: 100px;
 	padding: 30px;
 	background-color: white;
 	margin-top: 50px;
-	/*margin-bottom: 100px;*/
 	border-radius: 10px;
 	box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
 }

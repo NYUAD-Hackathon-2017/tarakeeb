@@ -141,19 +141,26 @@ function initwords() {
       .on("click", checkgrammar);
     svgsentence.append("text")
       .attr("id", "grammarbutton_text")
-      .attr("x", 0)
-      .attr("y", 50)
-      .style("font-size", 30)
-      .style("fill", "black")
-      .style("stroke", "black")
-      .text("Check!")
+<<<<<<< Updated upstream
+      .attr("x", 22)
+      .attr("y", 55)
+      .style("font-size", 20)
+=======
+      .attr("x", 16)
+      .attr("y", 55)
+      .style("font-size", 28)
+>>>>>>> Stashed changes
+      .style("fill", "white")
+      .style("stroke", "white")
+      .text("تأكد")
       .style("pointer-events", "none");
     svgsentence.append("line")
       .attr("id", "divider")
       .attr("x1", -1000)
       .attr("x2",  1000)
       .attr("y1", 0)
-      .attr("y2", 0);
+      .attr("y2", 0)
+      .style("stroke", "#22608a");
 
     svgsentence.append("circle")
       .attr("id", "clearbutton")
@@ -168,12 +175,18 @@ function initwords() {
       });
     svgsentence.append("text")
       .attr("id", "clearbutton_text")
+<<<<<<< Updated upstream
+      .attr("x", 103)
+      .attr("y", 55)
+      .style("font-size", 25)
+=======
       .attr("x", 100)
-      .attr("y", 50)
-      .style("font-size", 30)
-      .style("fill", "black")
-      .style("stroke", "black")
-      .text("Clear")
+      .attr("y", 55)
+      .style("font-size", 28)
+>>>>>>> Stashed changes
+      .style("fill", "white")
+      .style("stroke", "white")
+      .text("إمسح")
       .style("pointer-events", "none");
 
     forcesim.on("tick", updatewords);
@@ -380,21 +393,27 @@ function checkgrammar() {
 				let data = JSON.parse(d.response);
 				if (data[0]) {
 					d3.select("#result")
-					  .text("Correct!");
+					  .text("صحيح")
+					  .style("color", "green");
 					// if correct, read it out
 					let s = putsentence_s();
 					responsiveVoice.speak(s, "Arabic Female", {rate: 0.75});
 					addToPalettesIfUnique(POSarray);
 					redrawPalettes();
+					document.getElementById('meaning').style.display = 'none';
 
 				} else {
 					d3.select("#result")
-					  .text("Incorrect");
+					  .text("حاول مرة اخرى")
+					  .style("color", "red");
+					document.getElementById('meaning').style.display = 'none';
+
 				}
 
 				grammartimeout = window.setTimeout(function(){
 					d3.select("#result")
 					  .text("");
+					document.getElementById('meaning').style.display = 'inline';
 				}, 3000);
 	});
 }
