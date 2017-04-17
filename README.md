@@ -1,4 +1,4 @@
-# Korrect Me Kuick - 
+# Tarakeeb - 
 
 Installation
 ===
